@@ -17,7 +17,14 @@ export default function MealsPage() {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isScanDialogOpen, setIsScanDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [scannedMealData, setScannedMealData] = useState(null);
+  const [scannedMealData, setScannedMealData] = useState({
+    name: "",
+    description: "",
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fats: 0,
+  });
   const { toast } = useToast();
 
   useEffect(() => {
@@ -71,7 +78,14 @@ export default function MealsPage() {
           </Button>
           <Button 
             onClick={() => {
-              setScannedMealData(null);
+              setScannedMealData({
+                name: "",
+                description: "",
+                calories: 0,
+                protein: 0,
+                carbs: 0,
+                fats: 0,
+              });
               setIsAddDialogOpen(true);
             }}
             className="hover-lift"
@@ -82,7 +96,7 @@ export default function MealsPage() {
         </div>
       </div>
 
-      <WeeklyOverview meals={meals} />
+      {/* <WeeklyOverview meals={meals} /> */}
 
       <Separator className="my-8" />
 

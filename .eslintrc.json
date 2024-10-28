@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "overrideConfig": {
+    "linterOptions": {
+      "reportUnusedDisableDirectives": true // Add this line to enable the new option
+    }
+  }
 }

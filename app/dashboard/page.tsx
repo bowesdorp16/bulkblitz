@@ -23,27 +23,31 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function fetchData() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
 
-      // Fetch meals
-      const { data: mealsData } = await supabase
-        .from("meals")
-        .select("*")
-        .eq("user_id", user.id)
-        .eq("active", true)
-        .gte("date", new Date(new Date().setDate(new Date().getDate() - 7)).toISOString())
-        .order("date", { ascending: false });
+        // Fetch meals
+        const { data: mealsData } = await supabase
+          .from("meals")
+          .select("*")
+          .eq("user_id", user.id)
+          .eq("active", true)
+          .gte("date", new Date(new Date().setDate(new Date().getDate() - 7)).toISOString())
+          .order("date", { ascending: false });
 
-      // Fetch profile
-      const { data: profileData } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", user.id)
-        .single();
+        // Fetch profile
+        const { data: profileData } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .single();
 
-      if (mealsData) setMeals(mealsData);
-      if (profileData) setProfile(profileData);
+        if (mealsData) setMeals(mealsData);
+        if (profileData) setProfile(profileData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     }
 
     fetchData();
@@ -143,7 +147,7 @@ export default function Dashboard() {
             </div>
             <div>
               <h2 className="text-xl font-black tracking-tighter">LOG YOUR MEALS</h2>
-              <p className="text-muted-foreground">Track every meal to ensure you're hitting your caloric surplus and protein goals</p>
+              <p className="text-muted-foreground">Track every meal to ensure you&apos;re hitting your caloric surplus and protein goals</p>
             </div>
           </div>
           <Button asChild className="w-full hover-lift">

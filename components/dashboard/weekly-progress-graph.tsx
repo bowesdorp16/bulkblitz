@@ -107,10 +107,10 @@ export function WeeklyProgressGraph({ meals }: WeeklyProgressGraphProps) {
                 {weeklyTotals.calories} / {weeklyTarget.calories} kcal
               </span>
             </div>
-            {/* <Progress 
+            <Progress 
               value={calculateProgress(weeklyTotals.calories, weeklyTarget.calories)} 
               className="h-2"
-            /> */}
+            />
           </div>
 
           <div className="space-y-2">
@@ -123,10 +123,10 @@ export function WeeklyProgressGraph({ meals }: WeeklyProgressGraphProps) {
                 {weeklyTotals.protein.toFixed(1)} / {weeklyTarget.protein} g
               </span>
             </div>
-            {/* <Progress 
+            <Progress 
               value={calculateProgress(weeklyTotals.protein, weeklyTarget.protein)} 
               className="h-2"
-            /> */}
+            />
           </div>
 
           <div className="space-y-2">
@@ -139,10 +139,10 @@ export function WeeklyProgressGraph({ meals }: WeeklyProgressGraphProps) {
                 {weeklyTotals.carbs.toFixed(1)} / {weeklyTarget.carbs} g
               </span>
             </div>
-            {/* <Progress 
+            <Progress 
               value={calculateProgress(weeklyTotals.carbs, weeklyTarget.carbs)} 
               className="h-2"
-            /> */}
+            />
           </div>
 
           <div className="space-y-2">
@@ -155,10 +155,10 @@ export function WeeklyProgressGraph({ meals }: WeeklyProgressGraphProps) {
                 {weeklyTotals.fats.toFixed(1)} / {weeklyTarget.fats} g
               </span>
             </div>
-            {/* <Progress 
+            <Progress 
               value={calculateProgress(weeklyTotals.fats, weeklyTarget.fats)} 
               className="h-2"
-            /> */}
+            />
           </div>
         </div>
 

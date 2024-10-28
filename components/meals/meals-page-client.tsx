@@ -63,7 +63,7 @@ export function MealsPageClient() {
       <MealsList 
         meals={meals} 
         isLoading={isLoading} 
-        onMealDeleted={fetchMeals} 
+        onMealArchived={fetchMeals} 
       />
 
       <AddMealDialog

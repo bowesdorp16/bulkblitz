@@ -24,14 +24,25 @@ export async function POST(request: Request) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
-    const userId = session.metadata.userId;
+    const userId = session?.metadata?.userId;
 
     try {
+
+      const { data: tokens } = await supabase
+        .from("tokens")
+        .select("amount")
+        .eq("user_id", userId)
+        .single();
+
+      if (!tokens) throw new Error("Tokens not found");
+
+      const newAmount = tokens.amount + 1;
+
       // Update user's tokens
       const { error: tokenError } = await supabase
         .from("tokens")
         .update({ 
-          amount: supabase.sql`amount + 1`,
+          amount: newAmount,
           updated_at: new Date().toISOString()
         })
         .eq("user_id", userId);

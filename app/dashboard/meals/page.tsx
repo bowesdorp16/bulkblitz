@@ -96,7 +96,7 @@ export default function MealsPage() {
         </div>
       </div>
 
-      {/* <WeeklyOverview meals={meals} /> */}
+      <WeeklyOverview meals={meals} />
 
       <Separator className="my-8" />
 
